@@ -2,11 +2,17 @@
   <div class="app">
     <my-header class="nav"/>
     <router-view
-        @updatingStorage="updateLocalStorageItem"
-        :historyTable="historyTable"
-        :infoTable="infoTable"
+      @updatingStorage="updateLocalStorageItem"
+      :historyTable="historyTable"
+      :infoTable="infoTable"
+      v-model:isDialogActive="isDialogActive"
+      v-model:dialogText="dialogText"
     />
     <my-footer class="footer"/>
+    <my-dialog
+      v-model:show="isDialogActive"
+      v-model:text="dialogText"
+    />
   </div>
 </template>
 
@@ -23,7 +29,9 @@ export default {
     return {
       currentLocalStorageItem: [],
       historyTable: [],
-      infoTable: []
+      infoTable: [],
+      isDialogActive: false,
+      dialogText: ''
     }
   },
   methods: {
