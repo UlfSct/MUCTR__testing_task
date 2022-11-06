@@ -1,8 +1,6 @@
 <template>
-  <button
-      class="btn"
-  >
-  <slot></slot>
+  <button>
+    <slot></slot>
   </button>
 </template>
 
@@ -10,13 +8,16 @@
 export default {
   name: 'nav-button'
 }
+
 </script>
 
 <style scoped>
-.btn {
+
+button {
   padding: 5px;
   border: none;
   background: none;
   cursor: pointer;
 }
+
 </style>

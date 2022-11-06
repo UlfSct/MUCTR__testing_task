@@ -1,13 +1,13 @@
 <template>
   <form @submit.prevent>
-    <div class="selecting">
+    <div>
       <label> Выберите персонажа:
-      <my-select
-          class="selecting__input"
-          :options="selectOptions"
-          v-model:selectedItem="selectedLanguage"
-      >
-      </my-select>
+        <my-select
+            class="selecting__input"
+            :options="selectOptions"
+            v-model:selectedItem="selectedLanguage"
+        >
+        </my-select>
       </label>
     </div>
     <textarea
@@ -16,8 +16,8 @@
         class="custom-scroll"
     />
     <my-button
-      class="btn"
-      @click="formSubmitting"
+        class="btn"
+        @click="formSubmitting"
     >
       Перевести
     </my-button>
@@ -30,7 +30,7 @@ export default {
   props: {
     modelValue: [String]
   },
-  data () {
+  data() {
     return {
       selectOptions: [
         {value: 'shakespeare', name: 'Гамлет', selected: 'selected'},
@@ -47,25 +47,36 @@ export default {
     }
   },
   methods: {
-    updateInputText (event) {
+
+    /**
+     * Запускает событие обновления модели родительского класса, отвечающей за появление диалогового окна.
+     *
+     * @param event - объект события обновление тектовой области.
+     */
+    updateInputText(event) {
       this.$emit('update:modelValue', event.target.value)
     },
 
+    /**
+     * Запускает событие обновления модели родительского класса, отвечающего за отправку запроса на сервер.
+     */
     formSubmitting() {
       this.$emit('submitForm', this.selectedLanguage)
     }
   }
 }
+
 </script>
 
 <style scoped>
+
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.selecting {
+div {
   display: flex;
   justify-content: flex-end;
 }
@@ -96,4 +107,5 @@ textarea {
 textarea, .btn {
   margin-top: 20px;
 }
+
 </style>

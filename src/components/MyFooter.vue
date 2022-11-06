@@ -8,9 +8,11 @@
 export default {
   name: "my-footer"
 }
+
 </script>
 
 <style scoped>
+
 footer {
   display: flex;
   flex-direction: column;
@@ -18,4 +20,5 @@ footer {
   height: 70px;
   border-top: 2px solid rgb(0, 214, 174);
 }
+
 </style>

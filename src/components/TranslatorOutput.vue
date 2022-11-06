@@ -13,9 +13,11 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped>
+
 div {
   height: 200px;
   margin-top: 20px;

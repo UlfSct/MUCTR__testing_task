@@ -5,7 +5,7 @@
         alt="лого"
         @click="$router.push('/')"
     />
-    <nav class="nav__btns">
+    <nav>
       <nav-button
           class="btn"
           @click="$router.push('/')"
@@ -33,15 +33,14 @@
 </script>
 
 <style scoped>
+
 header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   height: 70px;
   padding: 0 50px;
-
   border-bottom: 2px solid rgb(0, 214, 174);
 }
 
@@ -54,4 +53,5 @@ img {
 .btn {
   margin-left: 40px;
 }
+
 </style>

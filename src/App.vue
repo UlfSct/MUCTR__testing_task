@@ -2,16 +2,17 @@
   <div class="app">
     <my-header class="nav"/>
     <router-view
-      @updatingStorage="updateLocalStorageItem"
-      :historyTable="historyTable"
-      :infoTable="infoTable"
-      v-model:isDialogActive="isDialogActive"
-      v-model:dialogText="dialogText"
+        @updatingStorage="updateLocalStorageItem"
+        :historyTable="historyTable"
+        :infoTable="infoTable"
+        v-model:isDialogActive="isDialogActive"
+        v-model:dialogText="dialogText"
+        class="container"
     />
     <my-footer class="footer"/>
     <my-dialog
-      v-model:show="isDialogActive"
-      v-model:text="dialogText"
+        v-model:show="isDialogActive"
+        v-model:text="dialogText"
     />
   </div>
 </template>
@@ -25,6 +26,7 @@ export default {
     MyFooter,
     MyHeader
   },
+
   data() {
     return {
       currentLocalStorageItem: [],
@@ -34,10 +36,14 @@ export default {
       dialogText: ''
     }
   },
+
   methods: {
+    /**
+     * Обновляет данные в модели массива переводов и загружает их в локальное хранилище.
+     */
     updateLocalStorageItem(text, translation, lang, date) {
       const idNumber = Date.now().toString(36) + Math.random().toString(36)
-      console.log(this.currentLocalStorageItem)
+
       this.currentLocalStorageItem.push({
         id: idNumber,
         date: date,
@@ -49,11 +55,11 @@ export default {
       localStorage.setItem('translations', JSON.stringify(this.currentLocalStorageItem))
 
       this.updateTables();
-      console.log(this.currentLocalStorageItem)
-      console.log(this.historyTable)
-      console.log(this.infoTable)
     },
 
+    /**
+     * Обновляет данные в моделях таблиц.
+     */
     updateTables() {
       this.clearTables()
 
@@ -75,6 +81,9 @@ export default {
       })
     },
 
+    /**
+     * Очищает модели таблиц и приводит их к первоначальному виду.
+     */
     clearTables() {
       this.historyTable = {
         headers: [
@@ -98,21 +107,24 @@ export default {
       }
     }
   },
+  /**
+   * Загружает данные из локального хранилища в модель массива переводов по созданию корневого компонента.
+   */
   created() {
     const translations = localStorage.getItem('translations');
+
     if (translations) {
       this.currentLocalStorageItem = JSON.parse(translations)
       this.updateTables()
     }
-
-
-
   }
 
 }
+
 </script>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -137,7 +149,6 @@ main {
   justify-content: center;
   min-height: calc(100vh - 180px);
   width: 800px;
-  padding: 20px;
 }
 
 .custom-scroll {
@@ -161,6 +172,10 @@ main {
 
 .nav, .footer {
   width: 80%;
+}
+
+.container {
+  padding: 20px;
 }
 
 </style>

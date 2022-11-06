@@ -16,10 +16,13 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped>
+
 main {
   justify-content: flex-start;
 }
+
 </style>

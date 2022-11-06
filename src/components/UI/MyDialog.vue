@@ -3,8 +3,8 @@
     <div @click.stop class="dialog__content">
       {{ text }}
       <my-button
-        class="btn"
-        @click="hideDialog"
+          class="btn"
+          @click="hideDialog"
       >
         ОК
       </my-button>
@@ -27,6 +27,10 @@ export default {
     text: String
   },
   methods: {
+
+    /**
+     * Запускает событие обновления модели родительского класса, отвечающей за появление диалогового окна.
+     */
     hideDialog() {
       this.$emit('update:show', false)
     }
@@ -35,6 +39,7 @@ export default {
 </script>
 
 <style scoped>
+
 .dialog {
   top: 0;
   bottom: 0;
@@ -50,9 +55,7 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: auto;
-
   background: white;
-
   border-radius: 15px;
   min-height: 50px;
   width: 300px;
@@ -63,4 +66,5 @@ export default {
   margin-top: 20px;
   width: 60px;
 }
+
 </style>
